@@ -1,11 +1,11 @@
-
+import Header from './components/header/Header';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-  Creating my App's files and folder ...
-    </div>
+<>
+<Header />
+</>
   );
 }
 
