@@ -18,6 +18,7 @@ function MainPage() {
             placeholder="Describe Your Task"
           ></input>
           <Button type="submit"> Time Details </Button>
+          <p>A goal without a specific time is an illusion</p>
         </form>
       </div>
     </>
