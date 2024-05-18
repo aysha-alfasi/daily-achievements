@@ -1,0 +1,53 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main menu {
+
+    margin: 50px;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: row;
+    
+}
+
+
+
+
+.tBtn {
+    font-size: 0.85rem;
+    background-color: #fba66a;
+    border: none;
+    border-bottom-color: #48d9f3;
+    color: #e0eff1;
+    border-radius: 4px 4px 0 0;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    margin: 5%;
+    width: 200px;
+    flex-shrink: 5;
+}
+
+.tBtn:hover {
+  background-color: #f86767;
+  color: #273133;
+}
+
+
+.confirmBtns {
+   display: flex;
+}
+
+.confirmBtn {
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 710px) {
+    .main menu {
+      flex-direction: column;
+    }
+  }

@@ -1,7 +1,17 @@
+import { useState } from "react";
 import classes from "./MainPage.module.css";
 import Button from "../../UI/button/Button";
+import TimeDetails from "./time-details-components/TimeDetails";
 
 function MainPage() {
+    const [show, setShow] = useState(false);
+
+ const handleClick = () => {
+
+    setShow(current => !current);
+    
+      }; 
+
   return (
     <>
       <div className={classes.MainPageContent}>
@@ -17,10 +27,12 @@ function MainPage() {
             name="add-task"
             placeholder="Describe Your Task"
           ></input>
-          <Button type="submit"> Time Details </Button>
+          <Button type='button' handleClick={handleClick}>
+           Time Details </Button>
           <p>A goal without a specific time is an illusion</p>
         </form>
       </div>
+      {show ? <TimeDetails/> : null}
     </>
   );
 }
