@@ -1,4 +1,4 @@
-.Button {
+button {
   border: none;
   border-radius: 5px;
   font-size: 8px;
@@ -12,8 +12,14 @@
   font-size: 15px;
 }
 
-.Button:hover {
+button:hover {
   cursor: pointer;
   background-color: rgb(243, 96, 169);
   transition: background-color 1s;
+  
+}
+
+.shedule{
+  background-color: rgb(235, 145, 255);
+
 }

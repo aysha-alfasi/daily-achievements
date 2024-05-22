@@ -5,7 +5,6 @@ import TimeCategory from "./time-category/TimeCategory";
 import TimeScope from "./time-scope/TimeScope";
 import EstimatedTime from "./estimated-time/EstimatedTime";
 
-
 export default function TimeDetails() {
   const [showTimeCategory, setShowTimeCategory] = useState(true);
   const [showTimeScope, setShowTimeScope] = useState(false);
@@ -28,16 +27,26 @@ export default function TimeDetails() {
   };
 
   return (
+    <>
     <div className={classes.main}>
       <div className={classes.tabs}>
         <menu>
-          <button className={showTimeCategory === true ? 'active' : classes.tBtn} onClick={firstTabHandleClick}>
+          <button
+            className={showTimeCategory === true ? "active" : classes.tBtn}
+            onClick={firstTabHandleClick}
+          >
             Time Category
           </button>
-          <button className={showTimeScope === true ? 'active' : classes.tBtn} onClick={secondTabHandleClick}>
+          <button
+            className={showTimeScope === true ? "active" : classes.tBtn}
+            onClick={secondTabHandleClick}
+          >
             Time Scope
           </button>
-          <button className={showTimeEstimated === true ? 'active' : classes.tBtn} onClick={thirdTabHandleClick}>
+          <button
+            className={showTimeEstimated === true ? "active" : classes.tBtn}
+            onClick={thirdTabHandleClick}
+          >
             Estimated Time
           </button>
         </menu>
@@ -45,10 +54,13 @@ export default function TimeDetails() {
         {showTimeScope ? <TimeScope /> : null}
         {showTimeEstimated ? <EstimatedTime /> : null}
         <div className={classes.confirmBtns}>
-          <Button className={classes.confirmBtn}>Add Current Task</Button>
-          <Button>Add for Shedule</Button>
+          <div className={classes.currentBtn}><Button>Add Current Task</Button></div>
+          <div className={classes.scheduleBtn}><Button className='shedule'>Add for Shedule</Button></div>
         </div>
       </div>
     </div>
+
+
+        </>
   );
 }

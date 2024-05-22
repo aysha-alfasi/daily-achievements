@@ -27,7 +27,7 @@ function MainPage() {
             name="add-task"
             placeholder="Describe Your Task"
           ></input>
-          <Button type='button' handleClick={handleClick}>
+          <Button className='Button' type='button' handleClick={handleClick} size='lg' >
            Time Details </Button>
           <p>A goal without a specific time is an illusion</p>
         </form>

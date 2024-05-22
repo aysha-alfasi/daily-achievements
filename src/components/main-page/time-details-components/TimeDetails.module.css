@@ -1,7 +1,10 @@
+
 .main {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 50px;
+
 }
 
 .main menu {
@@ -17,9 +20,10 @@
 
 
 
+
 .tBtn {
     font-size: 0.85rem;
-    background-color: #fba66a;
+    background-color: #b26afb;
     border: none;
     border-bottom-color: #48d9f3;
     color: #e0eff1;
@@ -27,27 +31,38 @@
     padding: 0.75rem 1rem;
     cursor: pointer;
     transition: all 0.2s ease-out;
-    margin: 5%;
+    margin: 4%;
     width: 200px;
     flex-shrink: 5;
 }
 
 .tBtn:hover {
-  background-color: #f86767;
+  background-color: #d894ff;
   color: #273133;
 }
 
 
 .confirmBtns {
-   display: flex;
+display: flex;
+justify-content: center;
+
 }
 
-.confirmBtn {
-    justify-content: space-between;
+.scheduleBtn , .currentBtn {
+  margin: 5%;
+  
 }
+
+
 
 @media only screen and (max-width: 710px) {
     .main menu {
+      flex-direction: column;
+    }
+    .confirmBtns {
+      display: flex;
+    }
+    .currentBtn, .sheduleBtn {
       flex-direction: column;
     }
   }
