@@ -1,66 +1,59 @@
-import { useState } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { createStore } from "little-state-machine";
 import classes from "./TimeDetails.module.css";
-import Button from "../../../UI/button/Button";
-import TimeCategory from "./time-category/TimeCategory";
-import TimeScope from "./time-scope/TimeScope";
-import EstimatedTime from "./estimated-time/EstimatedTime";
+import TimeCategory from "../../../pages/time-category/TimeCategory";
+import TimeScope from "../../../pages/time-scope/TimeScope";
+import EstimatedTime from "../../../pages/estimated-time/EstimatedTime";
+import Schedule from "../../../pages/Schedule";
 
 export default function TimeDetails() {
-  const [showTimeCategory, setShowTimeCategory] = useState(true);
-  const [showTimeScope, setShowTimeScope] = useState(false);
-  const [showTimeEstimated, setShowTimeEstimated] = useState(false);
+  createStore({
+    timeDetails: {},
+  });
 
-  const firstTabHandleClick = () => {
-    setShowTimeCategory((current) => !current);
-    setShowTimeScope(false);
-    setShowTimeEstimated(false);
-  };
-  const secondTabHandleClick = () => {
-    setShowTimeScope((current) => !current);
-    setShowTimeCategory(false);
-    setShowTimeEstimated(false);
-  };
-  const thirdTabHandleClick = () => {
-    setShowTimeEstimated((current) => !current);
-    setShowTimeCategory(false);
-    setShowTimeScope(false);
-  };
+  const location = useLocation();
+
+  const navigate = useNavigate();
 
   return (
     <>
-    <div className={classes.main}>
-      <div className={classes.tabs}>
-        <menu>
-          <button
-            className={showTimeCategory === true ? "active" : classes.tBtn}
-            onClick={firstTabHandleClick}
-          >
-            Time Category
-          </button>
-          <button
-            className={showTimeScope === true ? "active" : classes.tBtn}
-            onClick={secondTabHandleClick}
-          >
-            Time Scope
-          </button>
-          <button
-            className={showTimeEstimated === true ? "active" : classes.tBtn}
-            onClick={thirdTabHandleClick}
-          >
-            Estimated Time
-          </button>
-        </menu>
-        {showTimeCategory ? <TimeCategory /> : null}
-        {showTimeScope ? <TimeScope /> : null}
-        {showTimeEstimated ? <EstimatedTime /> : null}
-        <div className={classes.confirmBtns}>
-          <div className={classes.currentBtn}><Button>Add Current Task</Button></div>
-          <div className={classes.scheduleBtn}><Button className='shedule'>Add for Shedule</Button></div>
+      <div className={classes.main}>
+        <div className={classes.tabs}>
+          <menu>
+            <button
+              className={
+                location.pathname === "/timeCategory" ? "active" : classes.tBtn
+              }
+              onClick={() => navigate("/timeCategory")}
+            >
+              Time Category
+            </button>
+
+            <button
+              className={
+                location.pathname === "/timeScope" ? "active" : classes.tBtn
+              }
+              onClick={() => navigate("/timeScope")}
+            >
+              Time Scope
+            </button>
+            <button
+              className={
+                location.pathname === "/estimatedTime" ? "active" : classes.tBtn
+              }
+              onClick={() => navigate("/estimatedTime")}
+            >
+              Estimated Time
+            </button>
+          </menu>
+          <Routes>
+            <Route path="/timeCategory" element={<TimeCategory />} />
+            <Route path="/timeScope" element={<TimeScope />} />
+            <Route path="/estimatedTime" element={<EstimatedTime />} />
+            <Route path="/schedulePage" element={<Schedule />} />
+          </Routes>
         </div>
       </div>
-    </div>
-
-
-        </>
+    </>
   );
 }

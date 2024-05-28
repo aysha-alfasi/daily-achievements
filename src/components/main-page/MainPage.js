@@ -1,23 +1,36 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import classes from "./MainPage.module.css";
-import Button from "../../UI/button/Button";
+import { createStore } from "little-state-machine";
+import { useStateMachine } from "little-state-machine";
+import updateActions from "../../updatedActions";
 import TimeDetails from "./time-details-components/TimeDetails";
 
 function MainPage() {
-    const [show, setShow] = useState(false);
+  createStore({
+    timeDetails: {},
+  });
 
- const handleClick = () => {
+  const { state, actions } = useStateMachine({ updateActions });
+  const { handleSubmit, register } = useForm({
+    defaultValues: state.timeDetails,
+  });
 
-    setShow(current => !current);
-    
-      }; 
+  const onSubmit = (data) => {
+    actions.updateActions(data);
+  };
+
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow((current) => !current);
+  };
 
   return (
     <>
       <div className={classes.MainPageContent}>
-        <form className={classes.form}>
-          <label className={classes.label} for="add-task">
-            {" "}
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+          <label className={classes.label} htmlFor="add-task">
             Add Your first Task
           </label>
           <input
@@ -26,13 +39,18 @@ function MainPage() {
             id="add-task"
             name="add-task"
             placeholder="Describe Your Task"
-          ></input>
-          <Button className='Button' type='button' handleClick={handleClick} size='lg' >
-           Time Details </Button>
+            {...register("taskName")}
+          />
+          <input
+            className={classes.submit}
+            type="submit"
+            value="Time Details"
+            onClick={handleClick}
+          />
           <p>A goal without a specific time is an illusion</p>
         </form>
       </div>
-      {show ? <TimeDetails/> : null}
+      {show ? <TimeDetails /> : null}
     </>
   );
 }
