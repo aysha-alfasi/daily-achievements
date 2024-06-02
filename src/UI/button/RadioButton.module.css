@@ -1,0 +1,46 @@
+.radioInput {
+  color: blueviolet;
+  visibility: hidden;
+}
+
+.timeInput {
+  width: 100%;
+  background-color: #e25080;
+}
+
+.radioInput:checked + span {
+  border: 2px solid #ff84d6;
+}
+
+.radioInput:checked + span:after {
+  opacity: 1;
+}
+
+.radioLabel {
+}
+
+.customRadio {
+  left: -8px;
+  top: 6px;
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+  border: 2px solid #9a9a9a;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.customRadio::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #f4b400;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}

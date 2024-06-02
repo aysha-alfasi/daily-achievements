@@ -1,0 +1,12 @@
+.timeInput {
+  background: #ff9ec2;
+  border: none;
+  display: block;
+  margin-bottom: 0.625em;
+  margin-top: 0.3em;
+  outline-offset: 3px;
+  padding: 0.45em 0.45em 0.45em 0.65em;
+  text-align: center;
+  font-size: 15px;
+  width: 100%;
+}

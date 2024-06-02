@@ -1,39 +1,36 @@
+.p {
+  text-align: center;
+  align-items: center;
+}
 
 .main {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 50px;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 50px;
 }
 
 .main menu {
-
-    margin: 50px;
-    padding: 0;
-    display: flex;
-    gap: 0.25rem;
-    flex-direction: row;
-    
+  margin: 50px;
+  padding: 0;
+  display: flex;
+  gap: 0.25rem;
+  flex-direction: row;
 }
 
-
-
-
-
 .tBtn {
-    font-size: 0.85rem;
-    background-color: #b26afb;
-    border: none;
-    border-bottom-color: #48d9f3;
-    color: #e0eff1;
-    border-radius: 4px 4px 0 0;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease-out;
-    margin: 4%;
-    width: 200px;
-    flex-shrink: 5;
+  font-size: 0.85rem;
+  background-color: #b26afb;
+  border: none;
+  border-bottom-color: #48d9f3;
+  color: #e0eff1;
+  border-radius: 4px 4px 0 0;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  margin: 4%;
+  width: 200px;
+  flex-shrink: 5;
 }
 
 .tBtn:hover {
@@ -41,28 +38,25 @@
   color: #273133;
 }
 
-
 .confirmBtns {
-display: flex;
-justify-content: center;
-
+  display: flex;
+  justify-content: center;
 }
 
-.scheduleBtn , .currentBtn {
+.scheduleBtn,
+.currentBtn {
   margin: 5%;
-  
 }
-
-
 
 @media only screen and (max-width: 710px) {
-    .main menu {
-      flex-direction: column;
-    }
-    .confirmBtns {
-      display: flex;
-    }
-    .currentBtn, .sheduleBtn {
-      flex-direction: column;
-    }
+  .main menu {
+    flex-direction: column;
   }
+  .confirmBtns {
+    display: flex;
+  }
+  .currentBtn,
+  .sheduleBtn {
+    flex-direction: column;
+  }
+}

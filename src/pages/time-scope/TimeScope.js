@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import classes from "./TimeScope.module.css";
 import updateActions from "../../updatedActions";
+import TimeInput from "../../UI/button/TimeInput";
 
 function TimeScope() {
   const { state, actions } = useStateMachine({ updateActions });
@@ -13,33 +14,30 @@ function TimeScope() {
 
   const onSubmit = (data) => {
     actions.updateActions(data);
-    navigate("/estimatedTime");
+    navigate("/mainPage/timeDetails/estimatedTime");
   };
 
   return (
     <>
-      <div className={classes.main}>
-        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+        <div className={classes.timeWrapper}>
           <section>
-            <label htmlFor="timeScopeStart">Starts</label>
-            <input
-              type="number"
-              name="timeScopeStart"
-              id="timeScopeStart"
-              {...register("timeScope")}
+            <TimeInput
+              name="timeScope-start"
+              id="timeScope-start"
+              register={register}
             />
 
-            <label htmlFor="timeScopeEnd">Ends</label>
-            <input
-              type="number"
-              name="timeScopeEnd"
-              id="timeScopeEnd"
-              {...register("timeScope")}
+            <TimeInput
+              name="timeScope-end"
+              id="timeScope-end"
+              register={register}
             />
           </section>
-          <input type="submit" />
-        </form>
-      </div>
+        </div>
+
+        <input type="submit" />
+      </form>
     </>
   );
 }

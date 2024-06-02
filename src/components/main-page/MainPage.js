@@ -1,16 +1,17 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./MainPage.module.css";
 import { createStore } from "little-state-machine";
 import { useStateMachine } from "little-state-machine";
+
 import updateActions from "../../updatedActions";
-import TimeDetails from "./time-details-components/TimeDetails";
+import { useNavigate, Outlet } from "react-router-dom";
 
 function MainPage() {
   createStore({
     timeDetails: {},
   });
 
+  const navigate = useNavigate();
   const { state, actions } = useStateMachine({ updateActions });
   const { handleSubmit, register } = useForm({
     defaultValues: state.timeDetails,
@@ -18,12 +19,7 @@ function MainPage() {
 
   const onSubmit = (data) => {
     actions.updateActions(data);
-  };
-
-  const [show, setShow] = useState(false);
-
-  const handleClick = () => {
-    setShow((current) => !current);
+    navigate("/mainPage/timeDetails");
   };
 
   return (
@@ -33,24 +29,22 @@ function MainPage() {
           <label className={classes.label} htmlFor="add-task">
             Add Your first Task
           </label>
-          <input
-            className={classes.input}
-            type="text"
-            id="add-task"
-            name="add-task"
-            placeholder="Describe Your Task"
-            {...register("taskName")}
-          />
-          <input
-            className={classes.submit}
-            type="submit"
-            value="Time Details"
-            onClick={handleClick}
-          />
-          <p>A goal without a specific time is an illusion</p>
+          <div className={classes.inputSubmitWrapper}>
+            <input
+              className={classes.input}
+              type="text"
+              id="add-task"
+              name="add-task"
+              placeholder="Describe Your Task"
+              {...register("taskName")}
+            />
+
+            <input className={classes.submit} type="submit" value="Add" />
+          </div>
         </form>
       </div>
-      {show ? <TimeDetails /> : null}
+
+      <Outlet />
     </>
   );
 }

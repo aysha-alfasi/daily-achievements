@@ -1,61 +1,44 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import classes from "./EstimatedTime.module.css";
 import updateActions from "../../updatedActions";
+import Modal from "../../UI/Modal";
 
 function EstimatedTime() {
+  const [open, setOpen] = useState(false);
+
   const { state, actions } = useStateMachine({ updateActions });
-  const { handleSubmit, register } = useForm({
+  const { handleSubmit, register, reset } = useForm({
     defaultValues: state.timeDetails,
   });
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     actions.updateActions(data);
-    navigate("/schedulePage");
+    reset();
   };
 
   return (
     <>
+      {open && <Modal closeModal={setOpen} />}
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <section>
-          <div className={classes.inputWrapper}>
-            <input
-              id="15m"
-              type="radio"
-              name="estimatedTime"
-              value="Around 15m"
-              {...register("estimatedTime")}
-            />
-
-            <label htmlFor="15m">Around 15m</label>
-          </div>
-          <div className={classes.inputWrapper}>
-            <input
-              id="Hour-2Hours"
-              type="radio"
-              name="estimatedTime"
-              value="Hour- 2 Hours"
-              {...register("estimatedTime")}
-            />
-
-            <label htmlFor="Hour-2Hours">1 to 2 Hours</label>
-          </div>
-          <div className={classes.inputWrapper}>
-            <input
-              id="3Hours-5Hours"
-              type="radio"
-              name="estimatedTime"
-              value="3 Hours- 5 Hours"
-              {...register("estimatedTime")}
-            />
-
-            <label htmlFor="3Hours-5Hours">3 to 5 Hours</label>
-          </div>
-        </section>
+        <select
+          name="estimatedTime"
+          id="estimatedTime"
+          {...register("estimatedTime")}
+        >
+          <option value="Around 15m">Around 15m</option>
+          <option value="1Hour-2Hours">1Hour-2Hours</option>
+          <option value="2Hours-3Hours">2Hours-3Hours</option>
+          <option value="4Hours-5Hours">4Hours-5Hours</option>
+        </select>
         <p>Breaking long tasks into shorter ones is a good idea</p>
-        <input type="submit" />
+        <input
+          type="submit"
+          onClick={() => {
+            setOpen(true);
+          }}
+        />
       </form>
     </>
   );

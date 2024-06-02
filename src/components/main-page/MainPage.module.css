@@ -6,28 +6,29 @@
 }
 
 .form {
-  width: 50%;
+  width: 20%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
-.form p {
+/* .form p {
     color: rgba(57, 54, 54, 0.79);
     text-align: center;
   align-items: center;
   font-size: 12px;
-}
+} */
 
 .input {
+  background: grey;
   width: 100%;
-  height: 50px;
-  display: block;
-  margin-bottom: 3%;
-  box-shadow: 5px 5px 15px rgb(255, 163, 163);
-  border-radius: 4px;
-  border: none;
+/*   margin-bottom: 3%;
+   box-shadow: 5px 5px 15px rgb(255, 163, 163); */
+ border-radius: 50px;
+  border: 2px solid white;
   outline: none;
+  padding: 1rem 2rem; 
+ 
 }
 
 input:hover {
@@ -47,25 +48,80 @@ input:hover {
 .input {
   text-align: center;
   align-items: center;
-  margin-top: 2%;
 }
 
 .submit {
-  border: none;
-  border-radius: 5px;
-  font-size: 8px;
+border: none;
+  border-radius: 50px;
   color: #fff;
-  background-color: rgb(255, 145, 187);
+  background-color: rgb(74, 63, 67);
   cursor: pointer;
-  margin: auto;
-  padding: 10;
-  width: 130px;
-  height: 40px;
+  height: 100%;
+  aspect-ratio: 1;
   font-size: 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 2px solid white;
+ 
+
 }
 
 .submit:hover {
   cursor: pointer;
   background-color: rgb(243, 96, 169);
   transition: background-color 1s;
+}
+
+.inputSubmitWrapper {
+  display: flex;
+  width: 400px;
+  max-width: 100%;
+  position: relative;
+}
+
+.timeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+
+
+@media only screen and (max-width: 1166px) {
+  .form {
+    width: 30%;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    width: 40%;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+  .form {
+    width: 60%;
+  }
+
+}
+
+@media only screen and (max-width: 414px) {
+  .form {
+    width: 70%;
+  }
+
+}
+
+@media only screen and (max-width: 430px) {
+  .form {
+    width: 80%;
+  }
+
 }
